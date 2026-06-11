@@ -1,0 +1,82 @@
+{
+    "name": "article_manager",
+    "version": "1.0.0",
+    "display_name": "小说管理与番茄发布",
+    "description": "小说的创建、管理、编写、审阅、发布。目前只支持番茄小说。依赖 novel_writer 插件提供内容生成。",
+    "author": "qf",
+    "maintainers": [
+        "qf"
+    ],
+    "categories": [
+        "tool"
+    ],
+    "tags": [
+        "article",
+        "novel",
+        "fanqie",
+        "publishing"
+    ],
+    "dependencies": {
+        "plugins": [
+            "novel_writer>=1.2.0"
+        ],
+        "components": [
+            "novel_writer:service:novel_generation"
+        ]
+    },
+    "license": "GPL-3.0",
+    "python_dependencies": [
+        "playwright>=1.49.0"
+    ],
+    "include": [
+        {
+            "component_type": "service",
+            "component_name": "article_library",
+            "dependencies": [],
+            "enabled": true
+        },
+        {
+            "component_type": "service",
+            "component_name": "article_orchestrator",
+            "dependencies": [
+                "novel_writer:service:novel_generation"
+            ],
+            "enabled": true
+        },
+        {
+            "component_type": "service",
+            "component_name": "fanqie_platform",
+            "dependencies": [],
+            "enabled": true
+        },
+        {
+            "component_type": "command",
+            "component_name": "article",
+            "dependencies": [
+                "article_manager:service:article_library",
+                "article_manager:service:article_orchestrator"
+            ],
+            "enabled": true
+        },
+        {
+            "component_type": "action",
+            "component_name": "manage_article",
+            "dependencies": [
+                "article_manager:service:article_library",
+                "article_manager:service:article_orchestrator"
+            ],
+            "enabled": true
+        },
+        {
+            "component_type": "tool",
+            "component_name": "article_status",
+            "dependencies": [
+                "article_manager:service:article_library"
+            ],
+            "enabled": true
+        }
+    ],
+    "entry_point": "plugin.py",
+    "min_core_version": "1.0.0",
+    "dependencies_required": true
+}
