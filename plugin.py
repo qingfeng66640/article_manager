@@ -25,7 +25,7 @@ class ArticleManagerPlugin(BasePlugin):
 
     plugin_name = "article_manager"
     plugin_description = "小说的创建、管理、编写、审阅、发布。目前只支持番茄小说。"
-    plugin_version = "1.1.0"
+    plugin_version = "1.1.1"
 
     configs = [ArticleManagerConfig]
     dependent_components: list[str] = ["novel_writer:service:novel_generation"]

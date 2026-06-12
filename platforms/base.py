@@ -4,8 +4,8 @@ from __future__ import annotations
 
 from typing import Protocol
 
-from plugins.article_manager.models import ArticleAccount
-from plugins.article_manager.schemas import FanqiePublishPayload, FanqieResult
+from ..models import ArticleAccount
+from ..schemas import FanqiePublishPayload, FanqieResult
 
 
 class PublishPlatformAdapter(Protocol):

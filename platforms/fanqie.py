@@ -7,9 +7,9 @@ import time
 from pathlib import Path
 from typing import Any, Callable
 
-from plugins.article_manager.config import ArticleManagerConfig
-from plugins.article_manager.models import ArticleAccount
-from plugins.article_manager.schemas import FanqieCreateWorkPayload, FanqiePublishPayload, FanqieResult
+from ..config import ArticleManagerConfig
+from ..models import ArticleAccount
+from ..schemas import FanqieCreateWorkPayload, FanqiePublishPayload, FanqieResult
 
 
 class FanqiePlatformAdapter:
