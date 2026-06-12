@@ -5,8 +5,6 @@ from __future__ import annotations
 from dataclasses import asdict
 from typing import Any
 
-from plugins.novel_writer.schemas import NovelGenerationRequest
-
 from src.app.plugin_system.api import permission_api, service_api
 from src.app.plugin_system.base import BaseService
 from src.kernel.logger import get_logger
@@ -438,7 +436,7 @@ class ArticleOrchestratorService(BaseService):
         cfg = self._config()
         user_request = instruction.strip() or "请承接最新章节继续写下一章。"
         generation = await generation_service.generate_chapter(
-            NovelGenerationRequest(
+            dict(
                 user_request=user_request,
                 mode="chapter",
                 project_context=context,
